@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Learning</title>
+    <style>
+        .bg-black{
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div >
+        <h1 id="title" class="heading">Learning of DOM</h1>
+        <span style="display: none;" >test text</span>
+        <h2>Rachna Shukla</h2>
+        <h2>Prashant shukla's wife</h2>
+        <h2>Prashant shukla's wife</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, aliquid.</p>
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+        </ul>
+    </div>
+    
+</body>
+</html>
+
+// document.getElementById('title')
+// we can access it using Dot
+// document.getElementById('title').getAttribute('id')
+// document.getElementById('title').getAttribute('class')
+
+//document.getElementById('title').setAttribute('test') --> setAttribute will overwrite unless you tell another Attribute
+
+const title = document.getElementById('title')
+
+title.style.backgroundColor = 'green' --> since this is acting like an object having attributes
+
+// TO ADD CONTENT IN DOM
+
+title.textContent --> also shows text that are not visible (you get all content)
+title.innerHTML --> it gives full html value too, it supports html tags
+title.innerText --> here, hidden values are not shown
+
+// QUERY SELECTOR
+
+document.getElementByClassName('heading') --> HTML collection
+
+document.querySelector & document.querySelectorAll
+
+querySelector('h2') --> gives the first h2 only and gives only one value
+querySelector('#title') --> for id # is used
+querySelector('.heading') --> for class dot is used
+querySelector('imput[type="password"]') --> for input tag's attribute
+querySelectorAll('h2') --> gives all h2 --> forEach (nodelist we get) --> it is not pure array
+
+//map is not available like array
+
+// Examples to change color using querySelector
+
+const myul = document.querySelector('ul')
+const turnGreen = myul.querySelector('li')
+turnGreen.style.backgroundColor = 'green' --> syntax for changing the background
+
+// Examples using querySelectorAll
+
+const tempLiList = document.querySelectorAll('li') // output nodelist
+tempLiList.style.color = 'green' // it will not work
+
+tempLiList[0].style.color = 'green' // correct way to do 
+
+const myH1 = document.querySelectorAll('h1')
+myH1[0].style.color = 'green'
+
+tempLiList.forEach( (item) => {
+    item.style.backgroundColor = 'green'
+}) // forEach asks for callback function
+
+// convert HTMLCollection into Array
+
+const tempClassList = document.getElementByClassName('.list-item') // output HTMLCollection
+tempClassList.forEach( (item) => {
+    console.log(li)
+})  // nothing happens
+
+const myConvertedArray = Array.from(tempClassList) // .from is used for the conversion into array
+myConvertedArray.forEach( () => {
+    li.style.color = 'orange';
+    li.style.padding = '10px'
+})
