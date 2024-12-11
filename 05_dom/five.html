@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning | Rachna</title>
+</head>
+<body style="background-color: #212121; color: white">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName){
+       const li = document.createElement('li');
+       li.innerHTML = `${langName}` // innerHTML allows tree traversing --> for big projects avoid it
+       document.querySelector('.language').appendChild(li) // attaching through appendchild
+    }
+    addLanguage("python")
+    addLanguage("Typescript") 
+// Tree traversing is not optimized
+
+function addOptiLanguage(langName){
+    const li = document.createElement('li');
+    li.appendChild(document.createTextNode(langName))
+    document.querySelector('.language').appendChild(li)
+} // optimised version
+
+addOptiLanguage('golang')
+
+// EDITING A VALUE
+const secondLang = document.querySelector("li:nth-child(2)")
+// secondLang.innerHTML = "Mojo" // not optimised --> use it less
+
+const newLi = document.createElement('li');
+newLi.textContent = "Mojo"
+secondLang.replaceWith(newLi) // replace with method -- another way to edit
+
+// Another example
+const firstLang = document.querySelector("li:first-child")
+firstLang.outerHTML = '<li>TypeScript</li>'
+
+// REMOVE 
+const lastLang = document.querySelector("li:last-child")
+lastLang.remove()
+
+</script>
+</html>
