@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rachna and Code</title>
+</head>
+<body style="background-color: black; color: aliceblue;">
+    
+</body>
+<script>
+   const div =  document.createElement('div')
+   console.log(div);
+
+   // to add properties in div element like id and classes
+   div.className = "main"
+   div.id = Math.round(Math.random()*10 + 1)
+
+   // custom attributes
+   div.setAttribute("title", "generated title") // key value pair -- preferable as it saves round trip
+   div.style.backgroundColor = "green"
+   div.style.padding = "12px"
+//    div.innerText = "Rachna and Code" // first take reference and then overwrite it
+   const addText = document.createTextNode("Rachna and code")
+   div.appendChild(addText) // optimized code so it is better
+
+   document.body.appendChild(div)
+
+   // to display on page --> attach
+
+   
+</script>
+</html>
