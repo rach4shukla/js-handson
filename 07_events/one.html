@@ -45,28 +45,43 @@
 
     // Event Propogation --> true or false --> Event bubbling or event capturing
 
-    document.getElementById('images').addEventListener('click', function(e){
-        console.log('clicked inside the ul');
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log('clicked inside the ul');
         
-    }, true)
+    // }, true)
 
-    document.getElementById('soul').addEventListener('click', function(e){
-        console.log('soul clicked'); 
-    }, true) // Event bubbling -- (false) --> from inside to outside -- event propogation when clicked here
+    // document.getElementById('soul').addEventListener('click', function(e){
+    //     console.log('soul clicked'); 
+    // }, true) // Event bubbling -- (false) --> from inside to outside -- event propogation when clicked here
 
-    // Capturing --> when the 3rd parameter value is true (depends on the use case)
+    // // Capturing --> when the 3rd parameter value is true (depends on the use case)
 
-    // when you want to leave bubbling --> stop propogation
-    document.getElementById('mountain').addEventListener('click', function(e){
-        console.log("mountain clicked");
-        e.stopImmediatePropagation()
+    // // when you want to leave bubbling --> stop propogation
+    // document.getElementById('mountain').addEventListener('click', function(e){
+    //     console.log("mountain clicked");
+    //     e.stopImmediatePropagation()
+    // }, false)
+
+    // // Prevent Default
+    // document.getElementById('google').addEventListener('click', function(e){
+    //     e.preventDefault();
+    //     e.stopPropagation()
+    //     console.log('google clicked');
+    // }, false)
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.parentNode);
+        console.log(e.target.tagName);
+        
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+        
+        // removeIt.remove()
+        // removeIt.parentNode.removeChild(removeIt)
     }, false)
 
-    // Prevent Default
-    document.getElementById('google').addEventListener('click', function(e){
-        e.preventDefault();
-        e.stopPropagation()
-        console.log('google clicked');
-    }, false)
 </script>
 </html>
