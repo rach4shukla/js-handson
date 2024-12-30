@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue">
+    <h2>Amazing Images</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="mountain" 
+                src="https://images.unsplash.com/photo-1731432248531-819b94ee2dcd?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="mountain"></li>
+            <li><img width="200px" id="watch" 
+                src="https://images.unsplash.com/photo-1733908511568-3abc819b21b5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="watch"></li>
+            <li><img width="200px" id="circle" 
+                src="https://images.unsplash.com/photo-1733840068504-5a6ce9d19e14?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="circle"></li>
+            <li><img width="200px" id="soul" 
+                src="https://images.unsplash.com/photo-1732165782979-43619d170e86?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="soul"></li>
+            <li><a style="color:aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // Events are run sequentially --> but we can use async
+    // similar we have browser events --> activities
+
+    //Another approach --> attachEvent() --> mostly used on internet explorer
+    // jQuery - on event listener
+
+    // document.getElementById('soul').onclick = function(){
+        // alert('soul clicked')
+    // } // This approach is problematic
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    //EVent Listeners are the best approach with more features.
+    // document.getElementById('soul').addEventListener('click', function(e){
+    //     console.log(e);
+        
+    // }, false) // e --> event object --> browser and env. events
+
+    // Event Propogation --> true or false --> Event bubbling or event capturing
+
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log('clicked inside the ul');
+        
+    }, true)
+
+    document.getElementById('soul').addEventListener('click', function(e){
+        console.log('soul clicked'); 
+    }, true) // Event bubbling -- (false) --> from inside to outside -- event propogation when clicked here
+
+    // Capturing --> when the 3rd parameter value is true (depends on the use case)
+
+    // when you want to leave bubbling --> stop propogation
+    document.getElementById('mountain').addEventListener('click', function(e){
+        console.log("mountain clicked");
+        e.stopImmediatePropagation()
+    }, false)
+
+    // Prevent Default
+    document.getElementById('google').addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation()
+        console.log('google clicked');
+    }, false)
+</script>
+</html>
