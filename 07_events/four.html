@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rachna and JavaScript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+   // Function to log the date and a custom message
+   const sayDate = function (str) {
+       console.log(str, Date.now());
+   };
+
+   // Variable to store the interval ID
+   let intervalId = null;
+
+   // Start the interval when the "Start" button is clicked
+   document.querySelector('#start').addEventListener('click', function () {
+       if (!intervalId) { // Only start if there's no active interval
+           intervalId = setInterval(sayDate, 1000, "hi");
+           console.log("Interval started");
+       } else {
+           console.log("Interval already running");
+       }
+   });
+
+   // Stop the interval when the "Stop" button is clicked
+   document.querySelector('#stop').addEventListener('click', function () {
+       if (intervalId) { // Only stop if an interval is running
+           clearInterval(intervalId);
+           console.log("Interval stopped");
+           intervalId = null; // Reset the interval ID
+       } else {
+           console.log("No interval to stop");
+       }
+   });
+</script>
+</html>
