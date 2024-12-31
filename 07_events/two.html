@@ -1,0 +1,23 @@
+// Asynchronous Code -- Foundation
+
+// JavaScript --> Synchronous (one code executed then next is executed) + Single threaded (slow comparatively but work by delegating)
+// Execution Context --> execute one line of code at a time
+
+// each operation waits for the last one to complete before executing
+
+++++ BLOCKING CODE vs Non-BLOCKING CODE ++++++
+
+Blocking code --> block the flow of program (Read File Sync)
+Non-Blocking code --> does not block execution --> (Read File Async)
+
+// both are good depending on the use case
+
+Js Engine (Memory heap + Call Stack) =====> Web API / Node Environment(inside browser)
+
+Task Queue --> Promise (High priority queue)
+
+// During async code --> Web API -- set timeout / set interval / DOM API -- REGISTER CALL BACK --> add to queue
+which is further added to call stack
+
+New API --> fetch() --> Promise (to execute later, it has same callbacks)
+
