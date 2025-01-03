@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API request and V8 engine</title>
+</head>
+<body style="background-color: #212121;">
+    
+</body>
+<script>
+    const requesturl = 'https://api.github.com/users/hiteshchoudhary'
+    const xhr = new XMLHttpRequest();
+   xhr.open('GET', requesturl)
+   xhr.onreadystatechange = function (){
+    console.log(xhr.readyState);
+    if(xhr.readyState === 4){
+        const data = JSON.parse(this.responseText) // parse converts string into JSON
+        // response comes in string most of the time
+        console.log(data.followers);
+        // console is debugger / browser dev tool -- given by JS runtime
+        // JS runs on v8 engine --> node.js is implementation of v8 engine
+        // it is written in C++, core language
+
+    }
+   }
+   console.log("HERE");
+   xhr.send();
+   
+</script>
+</html>
+
+// earlier XML Http request were used --> ajax programming
+
+/*
+What is an API?
+An API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate and interact with each other. It acts as a bridge, enabling one application to request data or services from another.
+
+Think of an API as a waiter in a restaurant:
+
+You (the client) order food by asking the waiter.
+The waiter (the API) takes your order to the kitchen.
+The kitchen (the server) prepares the food and gives it to the waiter.
+The waiter brings the food back to you.
+In this analogy:
+
+You = the application making the request (client).
+Waiter = the API.
+Kitchen = the backend system (server).
+APIs are widely used in web development to enable interactions between clients (like web browsers or mobile apps) and servers.
+
+What is an API Request?
+An API request is a message sent by a client to an API, asking it to perform an action or return data. It typically includes:
+
+Endpoint (URL): The address of the API you’re trying to access.
+HTTP Method: The type of action the client wants to perform. Common methods include:
+GET: Retrieve data.
+POST: Send data to the server (e.g., to create a new resource).
+PUT: Update an existing resource.
+DELETE: Remove a resource.
+Headers: Additional information like authentication tokens, content type, etc.
+Body (optional): Data sent with the request (usually for POST or PUT requests).
+Example of an API Request
+Scenario: A weather app wants to display current weather for a location.
+API Endpoint: https://api.weather.com/v1/current
+Request:
+Method: GET
+Headers: Authorization: Bearer <API_KEY>
+Parameters: ?location=NewYork&unit=celsius
+API Response
+After processing the request, the API sends back a response, which could include:
+
+Status Code: Indicates success (e.g., 200 OK) or failure (e.g., 404 Not Found).
+Data: The requested information (e.g., temperature, humidity).
+APIs simplify the process of integrating different systems, enabling faster and more efficient application development.
+*/
