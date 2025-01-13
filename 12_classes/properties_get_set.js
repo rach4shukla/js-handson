@@ -50,5 +50,5 @@ console.log(tea.email); // can be accessed
 // _email --> underscore means private property but after get set _ does not mean much meaning to JS
 // getter setter methods to overwrite email by getting it from memory
 
-
+// ES 22 -- private properties ==> proposal to use # instead of _ (underscore)
 
